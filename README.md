@@ -301,7 +301,7 @@ supermarket-product-matcher/
 Clone the repository:
 
 ```bash
-git clone https://github.com/Mike27122003/supermarket-product-matcher
+git clone https://github.com/MichaelMerenciana/supermarket-product-matcher
 ```
 
 Install [uv](https://docs.astral.sh/uv/) if you don't already have it installed.
