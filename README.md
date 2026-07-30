@@ -178,6 +178,10 @@ Out of these candidates, a total of 5,498 Dirk products have been matched to an 
 Since no ground truth was available, a stratified random sample of 600 of the 5,498 candidate pairs was manually labelled according to the criteria described in the [Definition of a Match](#definition-of-a-match).
 To ensure representation across the full range of matching scores, 25% of the sample was drawn from the highest-scoring third of candidates, 50% from the middle third, and 25% from the lowest-scoring third.
 
+<div align="center">
+  <img src="images/CandidateChart.png" alt="Candidate reduction chart" width="20%">
+</div>
+
 ## Evaluation
 
 The matching model outputs a continuous similarity score rather than a binary prediction. Therefore, ROC-AUC and PR-AUC are used to evaluate how well the similarity scores separate true product matches from non-matches.
@@ -187,9 +191,15 @@ Following are the results on the stratified random sample described earlier:
 - **ROC-AUC:** 0.8396
 - **PR-AUC:** 0.8621
 
+<br>
+
 To convert similarity scores into binary match predictions, a classification threshold was optimized by maximizing the F1-score.
 
-**Optimal threshold: 0.78**
+<div align="center">
+  <img src="images/threshold_metrics.png" alt="Candidate reduction chart" width="70%">
+</div>
+
+The figure shows how precision, recall, and F1-score change with the decision threshold value. A threshold of **0.78** provides the highest F1-score and was therefore selected.
 
 At this threshold:
 
@@ -227,27 +237,42 @@ Using the model's predicted matches (similarity > [0.78](#evaluation)) yields si
 
 The difference between these results and those obtained from the manually verified matches is expected. The predicted matches include a much larger sample but may contain false positives and false negatives, whereas the manually verified pairs is based on a smaller sample without errors.
 
+### Matched product price comparison by supermarket:
+
+After matching, prices were compared between supermarkets.
+
+| Category  | Cheaper Dirk | Equal | Cheaper AH |
+| --------- | -----------: | ----: | ---------: |
+| Overall   |        2,387 |   158 |        501 |
+| Own Brand |          393 |    13 |         57 |
+
+<br>
+
+![alt text](images/wins_chart.png)
+
 # Code Structure
 
 Below an overview of structure for the most important files
 
 ```
+
 supermarket-product-matcher/
 ├── data/
-│   ├── processed/
-│   ├── raw/
-│   └── results/
+│ ├── processed/
+│ ├── raw/
+│ └── results/
 ├── scraper/
-│     └── dirk.py
+│ └── dirk.py
 ├── src/
-│   └── supermarkt/
+│ └── supermarkt/
 │     ├── processing.py
 │     ├── feature_engineering.py
 │     ├── matching.py
 │     ├── evaluation.py
 │     └── comparison.py
 └── notebooks/
-      └── analysis.ipynb
+  └── analysis.ipynb
+
 ```
 
 # Limitations

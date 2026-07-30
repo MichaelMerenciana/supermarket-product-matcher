@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.metrics import roc_auc_score, precision_recall_curve, auc, f1_score, precision_score, recall_score
+import matplotlib.pyplot as plt
 
 labeled_path = "data/results/labeled_pairs.csv"
 pairs_path = "data/results/pairs.csv"
@@ -41,3 +42,17 @@ best = results_df.loc[results_df["f1"].idxmax()]
 
 print("\nBest Custom Threshold:")
 print(best)
+
+results_df = results_df.tail(40)
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(thresholds[60:], results_df["f1"], label="F1")
+ax.plot(thresholds[60:], results_df["precision"], label="precision")
+ax.plot(thresholds[60:], results_df["recall"], label="recall")
+ax.set_xticks([0.6, 0.7, 0.8, 0.9, 1.0])
+
+plt.title("Metrics for different thresholds")
+plt.legend()
+plt.tight_layout()
+plt.savefig("images/threshold_metrics.png", dpi=300, bbox_inches="tight")
+

@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def price_comparison(pairs: pd.DataFrame , own_brand=False):
     if own_brand:
@@ -104,5 +105,42 @@ wins_df = pd.DataFrame(
 
 print("\nComparison:")
 print(wins_df)
+
+df = wins_df.iloc[::-1].copy().copy() # put own brand as bottom bar 
+
+left_equal = -df["Equal"] / 2
+left_dirk = left_equal - df["Cheaper Dirk"]
+left_ah = df["Equal"] / 2
+
+fig, ax = plt.subplots(figsize=(8, 3))
+y_positions = range(len(df.index))
+
+# Draw Red bars
+ax.barh(y_positions, df["Cheaper Dirk"], left=left_dirk, 
+        color="#f00000", label="Cheaper Dirk", height=0.4)
+
+# Draw Gray bars
+ax.barh(y_positions, df["Equal"], left=left_equal, 
+        color="#c0c0c0", label="Equal", height=0.4)
+
+# Draw Blue bars
+ax.barh(y_positions, df["Cheaper AH"], left=left_ah, 
+        color="#00ADE6", label="Cheaper AH", height=0.4)
+
+ax.set_yticks(y_positions)
+ax.set_yticklabels(df.index)
+ax.axvline(0, color="black", linestyle="-", linewidth=1, alpha=0.5) # Center line
+
+# Make the X-axis look like absolute counts
+ax.set_xlabel("Count")
+ax.set_xlim(left= -2800, right=2800)
+labels = [str(abs(int(x))) for x in ax.get_xticks()]
+ax.set_xticklabels(labels)
+ax.legend(title="Result", loc="upper right")
+
+plt.title("Matched product price comparison")
+plt.tight_layout()
+plt.savefig("images/wins_chart.png", dpi=300, bbox_inches="tight")
+
 
 # endregion
