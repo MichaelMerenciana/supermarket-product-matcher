@@ -232,7 +232,7 @@ The difference between these results and those obtained from the manually verifi
 Below an overview of structure for the most important files
 
 ```
-Supermarkt-Vergelijker/
+supermarket-product-matcher/
 ├── data/
 │   ├── processed/
 │   ├── raw/
@@ -274,7 +274,7 @@ Supermarkt-Vergelijker/
 Clone the repository:
 
 ```bash
-git clone https://github.com/Mike27122003/Supermarkt-Vergelijker
+git clone https://github.com/Mike27122003/supermarket-product-matcher
 ```
 
 Install [uv](https://docs.astral.sh/uv/) if you don't already have it installed.
