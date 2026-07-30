@@ -29,7 +29,7 @@ The AH data was obtained from the publicly available dataset published on [Zenod
 
 I initially attempted to scrape the AH website as well, but due to anti-bot measures I opted to use a publicly available dataset instead.
 
-The datasets used in this project are not included in the repository due to third-party data ownership and usage restrictions. The repository contains the code, pipeline, and sample files needed to understand and reproduce the workflow.
+The datasets used in this project are not included in the repository due to third-party data ownership and usage restrictions. The repository contains the code to reproduce the workflow.
 
 # Workflow
 
