@@ -175,12 +175,14 @@ Reduced number of candidates from ~64 million → 379,979 using blocking techniq
 
 Out of these candidates, a total of 5,498 Dirk products have been matched to an AH product with a matching-score > 0.6.
 
-Since no ground truth was available, a stratified random sample of 600 of the 5,498 candidate pairs was manually labelled according to the criteria described in the [Definition of a Match](#definition-of-a-match).
-To ensure representation across the full range of matching scores, 25% of the sample was drawn from the highest-scoring third of candidates, 50% from the middle third, and 25% from the lowest-scoring third.
-
 <div align="center">
   <img src="images/CandidateChart.png" alt="Candidate reduction chart" width="20%">
 </div>
+
+<br>
+
+Since no ground truth was available, a stratified random sample of 600 of the 5,498 candidate pairs was manually labelled according to the criteria described in the [Definition of a Match](#definition-of-a-match).
+To ensure representation across the full range of matching scores, 25% of the sample was drawn from the highest-scoring third of candidates, 50% from the middle third, and 25% from the lowest-scoring third.
 
 ## Evaluation
 
