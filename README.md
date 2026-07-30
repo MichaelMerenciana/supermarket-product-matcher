@@ -171,7 +171,7 @@ Does **not** count as a match:
 
 ## Matching
 
-Reduced number of candidates from ~64 million $\rarr$ 379,979 using blocking techniques (99.4% reduction).
+Reduced number of candidates from ~64 million → 379,979 using blocking techniques (99.4% reduction).
 
 Out of these candidates, a total of 5,498 Dirk products have been matched to an AH product with a matching-score > 0.6.
 
